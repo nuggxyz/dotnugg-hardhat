@@ -53,6 +53,7 @@ task(TASK_COMPILE, 'Runs deployment')
  */
 export async function wrapHardhatProvider(hre: HardhatRuntimeEnvironment) {
     // console.log(args.contractOutput.evm.bytecode.object);
+    await DotNuggCompiler.init();
 
-    hre.dotnugg.items = (await DotNuggCompiler.compile(hre.config.dotnugg.art)) as any as BigNumber[][];
+    hre.dotnugg.items = new DotNuggCompiler().compileDirectory(hre.config.dotnugg.art) as any as BigNumber[][];
 }
