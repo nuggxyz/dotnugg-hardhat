@@ -1,8 +1,8 @@
-/// <reference types="../../dotnugg-sdk/src/types" />
-
-import { BigNumber } from '@ethersproject/bignumber';
-
 import 'hardhat/types/config';
+import { BigNumber } from 'ethers';
+
+import { dotnugg } from '../../dotnugg-sdk/src/index';
+
 import 'hardhat/types/runtime';
 
 declare module 'hardhat/types/runtime' {
@@ -12,7 +12,13 @@ declare module 'hardhat/types/runtime' {
 }
 
 export interface DotNuggEnv {
-    items?: BigNumber[][];
+    items?: dotnugg.types.compile.Encoder.EncoderOutput[];
+    itemsByFeatureById?: dotnugg.types.compile.Encoder.OutputByItem;
+    itemsByFeatureByIdArray?: Dictionary<BigNumber[][]>;
+
+    itemsByFeatureByIdHex?: BigNumber[][][];
+    itemsByFeatureByIdBytes?: BigNumber[][];
+    stats?: dotnugg.types.compile.Encoder.Stats;
 }
 
 // items: { feature: number; bits: { bit: number; dat: number }[]; hex: BigNumber[] }[];
@@ -26,7 +32,7 @@ export interface DotNuggEnv {
 import 'hardhat/types/config';
 
 declare module 'hardhat/types/config' {
-    interface HardhatUserConfig {
+    export interface HardhatUserConfig {
         dotnugg?: {
             runOnDeploy?: boolean;
             runOnTest?: boolean;

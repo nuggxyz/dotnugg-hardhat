@@ -3,7 +3,7 @@ import { TASK_TEST, TASK_RUN, TASK_COMPILE } from 'hardhat/builtin-tasks/task-na
 import { HardhatRuntimeEnvironment } from 'hardhat/types';
 import { BigNumber } from 'ethers';
 
-import { DotNuggCompiler } from '../../dotnugg-sdk/src/DotNuggCompiler';
+import { dotnugg } from '../../dotnugg-sdk/src/';
 
 import './types';
 
@@ -34,7 +34,31 @@ task(TASK_TEST, 'Runs mocha tests')
         return runSuper(args);
     });
 
-task(TASK_COMPILE, 'Runs deployment')
+task('build-txs', 'Runs mocha tests').setAction(async (args, hre, runSuper) => {
+    if (!hre.dotnugg) {
+        hre.dotnugg = {};
+    }
+
+    // if (args.dotnugg) {
+    await wrapHardhatProvider(hre);
+
+    // }
+    return runSuper(args);
+});
+
+task('build-params', 'Runs mocha tests').setAction(async (args, hre, runSuper) => {
+    if (!hre.dotnugg) {
+        hre.dotnugg = {};
+    }
+
+    // if (args.dotnugg) {
+    await wrapHardhatProvider(hre);
+
+    // }
+    return runSuper(args);
+});
+
+task('deploy', 'Runs deployment')
     .addFlag('dotnugg', 'trace logs and calls in transactions')
     .setAction(async (args, hre, runSuper) => {
         if (!hre.dotnugg) {
@@ -46,13 +70,27 @@ task(TASK_COMPILE, 'Runs deployment')
         }
         return runSuper(args);
     });
-
 /**
  * Add hardhat-tracer to your environment
  * @param hre: HardhatRuntimeEnvironment - required to get access to contract artifacts and tracer env
  */
 export async function wrapHardhatProvider(hre: HardhatRuntimeEnvironment) {
-    // console.log(args.contractOutput.evm.bytecode.object);
+    const RAND_BACK_INDEX = dotnugg.utils.randIntBetween(8);
+    const RAND_EYES_INDEX = dotnugg.utils.randIntBetween(27);
+    const RAND_MOUTH_INDEX = dotnugg.utils.randIntBetween(12);
+    const RAND_HEAD_INDEX = dotnugg.utils.randIntBetween(12);
+    const RAND_HAIR_INDEX = dotnugg.utils.randIntBetween(15);
+    const RAND_NECK_INDEX = dotnugg.utils.randIntBetween(24);
 
-    hre.dotnugg.items = (await DotNuggCompiler.compile(hre.config.dotnugg.art)) as any as BigNumber[][];
+    // console.log(args.contractOutput.evm.bytecode.object);
+    await dotnugg.compile.Compiler.init();
+    const res = dotnugg.compile.Compiler.compileDirectoryWithCache(hre.config.dotnugg.art);
+    hre.dotnugg.items = res.encoder.output;
+    hre.dotnugg.itemsByFeatureById = res.encoder.outputByItem;
+    hre.dotnugg.itemsByFeatureByIdArray = res.encoder.outputByItemArray;
+
+    hre.dotnugg.itemsByFeatureByIdHex = res.encoder.ouputByFeatureHex;
+    hre.dotnugg.itemsByFeatureByIdBytes = res.encoder.ouputByFeaturePlain;
+
+    hre.dotnugg.stats = res.encoder.stats;
 }
