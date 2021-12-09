@@ -1,7 +1,5 @@
 /// <reference types="../../dotnugg-sdk/src/types" />
 
-import { BigNumber } from '@ethersproject/bignumber';
-
 import 'hardhat/types/config';
 import 'hardhat/types/runtime';
 
@@ -12,7 +10,7 @@ declare module 'hardhat/types/runtime' {
 }
 
 export interface DotNuggEnv {
-    items?: BigNumber[][];
+    items?: NL.DotNugg.Encoder.EncoderOutput[];
 }
 
 // items: { feature: number; bits: { bit: number; dat: number }[]; hex: BigNumber[] }[];
