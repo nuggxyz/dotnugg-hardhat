@@ -3,7 +3,7 @@ import { TASK_TEST, TASK_RUN, TASK_COMPILE } from 'hardhat/builtin-tasks/task-na
 import { HardhatRuntimeEnvironment } from 'hardhat/types';
 import { BigNumber } from 'ethers';
 
-import { DotNuggCompiler } from '../../dotnugg-sdk/src/DotNuggCompiler';
+import { dotnugg } from '../../dotnugg-sdk/src/';
 
 import './types';
 
@@ -53,7 +53,7 @@ task(TASK_COMPILE, 'Runs deployment')
  */
 export async function wrapHardhatProvider(hre: HardhatRuntimeEnvironment) {
     // console.log(args.contractOutput.evm.bytecode.object);
-    await DotNuggCompiler.init();
+    await dotnugg.compile.Compiler.init();
 
-    hre.dotnugg.items = new DotNuggCompiler().compileDirectory(hre.config.dotnugg.art).encoder.output;
+    hre.dotnugg.items = dotnugg.compile.Compiler.compileDirectory(hre.config.dotnugg.art).encoder.output;
 }

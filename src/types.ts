@@ -1,6 +1,5 @@
-/// <reference types="../../dotnugg-sdk/src/types" />
-
 import 'hardhat/types/config';
+import { dotnugg } from '../../dotnugg-sdk/src/index';
 import 'hardhat/types/runtime';
 
 declare module 'hardhat/types/runtime' {
@@ -10,7 +9,7 @@ declare module 'hardhat/types/runtime' {
 }
 
 export interface DotNuggEnv {
-    items?: NL.DotNugg.Encoder.EncoderOutput[];
+    items?: dotnugg.types.compile.Encoder.EncoderOutput[];
 }
 
 // items: { feature: number; bits: { bit: number; dat: number }[]; hex: BigNumber[] }[];
