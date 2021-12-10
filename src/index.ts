@@ -55,5 +55,5 @@ export async function wrapHardhatProvider(hre: HardhatRuntimeEnvironment) {
     // console.log(args.contractOutput.evm.bytecode.object);
     await dotnugg.compile.Compiler.init();
 
-    hre.dotnugg.items = dotnugg.compile.Compiler.compileDirectory(hre.config.dotnugg.art).encoder.output;
+    hre.dotnugg.items = dotnugg.compile.Compiler.compileDirectoryWithCache(hre.config.dotnugg.art).encoder.output;
 }
