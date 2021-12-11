@@ -54,6 +54,7 @@ task(TASK_COMPILE, 'Runs deployment')
 export async function wrapHardhatProvider(hre: HardhatRuntimeEnvironment) {
     // console.log(args.contractOutput.evm.bytecode.object);
     await dotnugg.compile.Compiler.init();
-
-    hre.dotnugg.items = dotnugg.compile.Compiler.compileDirectoryWithCache(hre.config.dotnugg.art).encoder.output;
+    const res = dotnugg.compile.Compiler.compileDirectoryWithCache(hre.config.dotnugg.art);
+    hre.dotnugg.items = res.encoder.output;
+    hre.dotnugg.itemsByFeatureById = res.encoder.outputByItem;
 }
