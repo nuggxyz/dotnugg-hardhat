@@ -52,9 +52,17 @@ task(TASK_COMPILE, 'Runs deployment')
  * @param hre: HardhatRuntimeEnvironment - required to get access to contract artifacts and tracer env
  */
 export async function wrapHardhatProvider(hre: HardhatRuntimeEnvironment) {
+    const RAND_BACK_INDEX = dotnugg.utils.randIntBetween(8);
+    const RAND_EYES_INDEX = dotnugg.utils.randIntBetween(27);
+    const RAND_MOUTH_INDEX = dotnugg.utils.randIntBetween(12);
+    const RAND_HEAD_INDEX = dotnugg.utils.randIntBetween(12);
+    const RAND_HAIR_INDEX = dotnugg.utils.randIntBetween(15);
+    const RAND_NECK_INDEX = dotnugg.utils.randIntBetween(24);
+
     // console.log(args.contractOutput.evm.bytecode.object);
     await dotnugg.compile.Compiler.init();
     const res = dotnugg.compile.Compiler.compileDirectoryWithCache(hre.config.dotnugg.art);
     hre.dotnugg.items = res.encoder.output;
     hre.dotnugg.itemsByFeatureById = res.encoder.outputByItem;
+    hre.dotnugg.stats = res.encoder.stats;
 }
