@@ -25,7 +25,7 @@ export interface DotNuggEnv {
 import 'hardhat/types/config';
 
 declare module 'hardhat/types/config' {
-    interface HardhatUserConfig {
+    export interface HardhatUserConfig {
         dotnugg?: {
             runOnDeploy?: boolean;
             runOnTest?: boolean;

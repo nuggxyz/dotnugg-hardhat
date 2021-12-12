@@ -46,7 +46,6 @@ task(TASK_COMPILE, 'Runs deployment')
         }
         return runSuper(args);
     });
-
 /**
  * Add hardhat-tracer to your environment
  * @param hre: HardhatRuntimeEnvironment - required to get access to contract artifacts and tracer env
