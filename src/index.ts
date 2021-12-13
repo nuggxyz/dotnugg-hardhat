@@ -34,7 +34,7 @@ task(TASK_TEST, 'Runs mocha tests')
         return runSuper(args);
     });
 
-task(TASK_COMPILE, 'Runs deployment')
+task('deploy', 'Runs deployment')
     .addFlag('dotnugg', 'trace logs and calls in transactions')
     .setAction(async (args, hre, runSuper) => {
         if (!hre.dotnugg) {
