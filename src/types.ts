@@ -1,5 +1,8 @@
 import 'hardhat/types/config';
+import { BigNumber } from 'ethers';
+
 import { dotnugg } from '../../dotnugg-sdk/src/index';
+
 import 'hardhat/types/runtime';
 
 declare module 'hardhat/types/runtime' {
@@ -11,6 +14,8 @@ declare module 'hardhat/types/runtime' {
 export interface DotNuggEnv {
     items?: dotnugg.types.compile.Encoder.EncoderOutput[];
     itemsByFeatureById?: dotnugg.types.compile.Encoder.OutputByItem;
+    itemsByFeatureByIdHex?: BigNumber[][][];
+    itemsByFeatureByIdBytes?: BigNumber[][];
     stats?: dotnugg.types.compile.Encoder.Stats;
 }
 

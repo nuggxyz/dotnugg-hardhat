@@ -63,5 +63,8 @@ export async function wrapHardhatProvider(hre: HardhatRuntimeEnvironment) {
     const res = dotnugg.compile.Compiler.compileDirectoryWithCache(hre.config.dotnugg.art);
     hre.dotnugg.items = res.encoder.output;
     hre.dotnugg.itemsByFeatureById = res.encoder.outputByItem;
+    hre.dotnugg.itemsByFeatureByIdHex = res.encoder.ouputByFeatureHex;
+    hre.dotnugg.itemsByFeatureByIdBytes = res.encoder.ouputByFeaturePlain;
+
     hre.dotnugg.stats = res.encoder.stats;
 }
