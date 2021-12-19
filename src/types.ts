@@ -14,6 +14,8 @@ declare module 'hardhat/types/runtime' {
 export interface DotNuggEnv {
     items?: dotnugg.types.compile.Encoder.EncoderOutput[];
     itemsByFeatureById?: dotnugg.types.compile.Encoder.OutputByItem;
+    itemsByFeatureByIdArray?: Dictionary<BigNumber[][]>;
+
     itemsByFeatureByIdHex?: BigNumber[][][];
     itemsByFeatureByIdBytes?: BigNumber[][];
     stats?: dotnugg.types.compile.Encoder.Stats;
