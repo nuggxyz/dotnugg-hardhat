@@ -6,7 +6,12 @@
         "esModuleInterop": true,
         "resolveJsonModule": true,
         "downlevelIteration": true,
-        "outDir": "./build"
+        "outDir": "./build" /* Redirect output structure to the directory. */,
+        "declaration": true,
+        "declarationMap": true,
+        "sourceMap": true
     },
-    "exclude": ["node_modules", "types"]
+
+    // "include": ["src/**/*"],
+    "exclude": []
 }

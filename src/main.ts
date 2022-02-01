@@ -1,8 +1,9 @@
 import { task, extendConfig } from 'hardhat/config';
 import { TASK_TEST, TASK_RUN, TASK_COMPILE } from 'hardhat/builtin-tasks/task-names';
 import { HardhatRuntimeEnvironment } from 'hardhat/types';
-// import './types';
-import { dotnugg } from 'hardhat';
+import { dotnugg } from '@nuggxyz/dotnugg-sdk';
+
+import './types';
 
 extendConfig((config, userConfig) => {
     config.dotnugg = Object.assign(

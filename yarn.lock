@@ -707,10 +707,10 @@
   dependencies:
     plist "^3.0.4"
 
-"@nuggxyz/dotnugg-sdk@^0.1.2":
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/@nuggxyz/dotnugg-sdk/-/dotnugg-sdk-0.1.2.tgz#e540cec77fe2b34e96b2ced5ad2760ce144c1f42"
-  integrity sha512-7u3nJhXkI1fgumenx1p77pZVwo2X8FPhtVZ7MoLIpBhwGqGl/zaSVF4X+gnOtpS6/wDemE3SpK4D2Len6058IQ==
+"@nuggxyz/dotnugg-sdk@0.1.5":
+  version "0.1.5"
+  resolved "https://registry.yarnpkg.com/@nuggxyz/dotnugg-sdk/-/dotnugg-sdk-0.1.5.tgz#8fd8327974832c8bcc6a3683b8ab2f9465d176d7"
+  integrity sha512-U+UNIBiLb9+wf/KYf81qwc+9G9N1NK9RFJVSeT8AfX+cqyFZWwOrbR7nFeC6yUKEfFVsckv6fue3s+6d5yffjQ==
   dependencies:
     "@ethersproject/abi" "^5.0.0"
     "@ethersproject/bytes" "^5.0.0"

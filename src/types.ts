@@ -2,22 +2,23 @@ import 'hardhat/types/config';
 import 'hardhat/types/runtime';
 
 import { BigNumber } from 'ethers';
-import { dotnugg as dotnuggTypes } from '@nuggxyz/dotnugg-sdk';
-import { dotnugg } from '@nuggxyz/dotnugg-sdk/src/index';
+import { dotnugg } from '@nuggxyz/dotnugg-sdk';
+import * as EncoderTypes from '@nuggxyz/dotnugg-sdk/build/builder/types/EncoderTypes';
+import * as BuilderTypes from '@nuggxyz/dotnugg-sdk/build/builder/types/BuilderTypes';
 
 declare module 'hardhat/types/runtime' {
     interface HardhatRuntimeEnvironment {
-        dotnugg: { env: DotNuggEnv } & dotnuggTypes;
+        dotnugg: { env: DotNuggEnv } & typeof dotnugg;
     }
 }
 
 export interface DotNuggEnv {
-    items?: dotnugg.types.builder.Encoder.EncoderOutput[];
-    itemsByFeatureById?: dotnugg.types.builder.Encoder.OutputByItem;
-    itemsByFeatureByIdArray?: Dictionary<BigNumber[][]>;
+    items?: EncoderTypes.EncoderOutput[];
+    itemsByFeatureById?: EncoderTypes.OutputByItem;
+    itemsByFeatureByIdArray?: BuilderTypes.Dictionary<BigNumber[][]>;
     itemsByFeatureByIdHex?: BigNumber[][][];
     itemsByFeatureByIdBytes?: BigNumber[][];
-    stats?: dotnugg.types.builder.Encoder.Stats;
+    stats?: EncoderTypes.Stats;
 }
 
 declare module 'hardhat/types/config' {
