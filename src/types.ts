@@ -1,35 +1,24 @@
 import 'hardhat/types/config';
-import { BigNumber } from 'ethers';
-
-import { dotnugg } from '../../dotnugg-sdk/src/index';
-
 import 'hardhat/types/runtime';
+
+import { BigNumber } from 'ethers';
+import { dotnugg as dotnuggTypes } from '@nuggxyz/dotnugg-sdk';
+import { dotnugg } from '@nuggxyz/dotnugg-sdk/src/index';
 
 declare module 'hardhat/types/runtime' {
     interface HardhatRuntimeEnvironment {
-        dotnugg: DotNuggEnv;
+        dotnugg: { env: DotNuggEnv } & dotnuggTypes;
     }
 }
 
 export interface DotNuggEnv {
-    items?: dotnugg.types.compile.Encoder.EncoderOutput[];
-    itemsByFeatureById?: dotnugg.types.compile.Encoder.OutputByItem;
+    items?: dotnugg.types.builder.Encoder.EncoderOutput[];
+    itemsByFeatureById?: dotnugg.types.builder.Encoder.OutputByItem;
     itemsByFeatureByIdArray?: Dictionary<BigNumber[][]>;
-
     itemsByFeatureByIdHex?: BigNumber[][][];
     itemsByFeatureByIdBytes?: BigNumber[][];
-    stats?: dotnugg.types.compile.Encoder.Stats;
+    stats?: dotnugg.types.builder.Encoder.Stats;
 }
-
-// items: { feature: number; bits: { bit: number; dat: number }[]; hex: BigNumber[] }[];
-
-// export interface TracerDependencies {
-//     artifacts: Artifacts;
-//     tracerEnv: TracerEnv;
-//     provider: ProviderLike;
-// }
-
-import 'hardhat/types/config';
 
 declare module 'hardhat/types/config' {
     export interface HardhatUserConfig {
