@@ -9,9 +9,10 @@
         "outDir": "./build" /* Redirect output structure to the directory. */,
         "declaration": true,
         "declarationMap": true,
-        "sourceMap": true
+        "sourceMap": true,
+        "composite": true
     },
 
-    // "include": ["src/**/*"],
+    "include": ["src/**/*"],
     "exclude": []
 }
