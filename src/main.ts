@@ -4,6 +4,7 @@ import { HardhatRuntimeEnvironment } from 'hardhat/types';
 import { dotnugg } from '@nuggxyz/dotnugg-sdk';
 
 import './types';
+import { globalHRE } from './helpers';
 
 extendConfig((config, userConfig) => {
     config.dotnugg = Object.assign(
@@ -91,3 +92,5 @@ export async function wrapHardhatProvider(hre: HardhatRuntimeEnvironment) {
 
     hre.dotnugg.env.stats = res.stats;
 }
+
+export { globalHRE };

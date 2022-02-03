@@ -3,8 +3,12 @@ import 'hardhat/types/runtime';
 
 import { BigNumber } from 'ethers';
 import { dotnugg } from '@nuggxyz/dotnugg-sdk';
-import * as EncoderTypes from '@nuggxyz/dotnugg-sdk/build/builder/types/EncoderTypes';
-import * as BuilderTypes from '@nuggxyz/dotnugg-sdk/build/builder/types/BuilderTypes';
+import * as EncoderTypes from '@nuggxyz/dotnugg-sdk/dist/builder/types/EncoderTypes';
+import * as BuilderTypes from '@nuggxyz/dotnugg-sdk/dist/builder/types/BuilderTypes';
+
+import './main.ts';
+
+import './helpers.ts';
 
 declare module 'hardhat/types/runtime' {
     interface HardhatRuntimeEnvironment {
